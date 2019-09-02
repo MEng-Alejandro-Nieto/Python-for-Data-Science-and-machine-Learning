@@ -1,0 +1,16 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+iris=sns.load_dataset('iris')
+print(iris.head())
+print("")
+print(iris['species'].nunique())
+print("")
+print(iris['species'].unique())
+#sns.pairplot(iris)
+g=sns.PairGrid(iris)
+#g.map(plt.scatter)
+g.map_diag(sns.distplot)
+g.map_lower(sns.kdeplot)
+g.map_upper(plt.scatter)
+plt.tight_layout()
+plt.show()
